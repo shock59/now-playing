@@ -1,0 +1,72 @@
+<html>
+  <head>
+    <style>
+      body {
+        background: transparent;
+        margin: 0;
+      }
+
+      #main {
+        background: PLACEHOLDER_widgetBackground;
+        padding: PLACEHOLDER_widgetPadding;
+        border-radius: PLACEHOLDER_widgetRadius;
+        display: flex;
+        align-items: center;
+        flex-direction: PLACEHOLDER_layout;
+      }
+
+      img {
+        width: PLACEHOLDER_artWidth;
+        height: PLACEHOLDER_artHeight;
+        border-radius: PLACEHOLDER_artRadius;
+        /* prettier-ignore */
+        margin-PLACEHOLDER_artMarginDirection: PLACEHOLDER_artMargin;
+      }
+
+      #text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-family: PLACEHOLDER_font;
+        text-align: PLACEHOLDER_textAlign;
+      }
+
+      #title {
+        color: PLACEHOLDER_titleColor;
+        font-size: PLACEHOLDER_titleSize;
+        font-weight: PLACEHOLDER_titleWeight;
+      }
+
+      #artist {
+        color: PLACEHOLDER_artistColor;
+        font-size: PLACEHOLDER_artistSize;
+        font-weight: PLACEHOLDER_artistWeight;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <img />
+      <div id="text">
+        <span id="title"></span>
+        <span id="artist"></span>
+      </div>
+    </div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const artElement = document.querySelector("img");
+        const titleElement = document.querySelector("#title");
+        const artistElement = document.querySelector("#artist");
+
+        const websocket = new WebSocket("ws://localhost:4641/");
+        websocket.onmessage = ({ data }) => {
+          json = JSON.parse(data);
+          artElement.src = json.artUrl;
+          titleElement.innerHTML = json.title;
+          artistElement.innerHTML = json.artist;
+        };
+      });
+    </script>
+  </body>
+</html>

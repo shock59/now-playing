@@ -1,0 +1,23 @@
+player: "spotify"
+webServerPort: 4640
+websocketServerPort: 4641
+
+widgetBackground: "transparent"
+widgetRadius: "0px"
+widgetPadding: "0px"
+layout: "row"
+
+defaultArt: "./defaultArt.svg"
+artWidth: "64px"
+artHeight: "64px"
+artRadius: "0px"
+artMargin: "8px"
+
+font: "sans-serif"
+textAlign: "start"
+titleSize: "18px"
+titleColor: "#ffffff"
+titleWeight: "normal"
+artistSize: "14px"
+artistColor: "#ffffff90"
+artistWeight: "normal"
